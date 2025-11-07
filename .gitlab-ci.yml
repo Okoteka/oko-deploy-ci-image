@@ -14,3 +14,5 @@ build_ci_image:
     - docker push "$IMAGE_TAG_COMMIT"
   only:
     - master
+  tags:
+    local
