@@ -23,5 +23,8 @@ trigger_internal:
   trigger:
     project: "Okoteka/oko-deploy-ci-image-internal"
     branch: "master"
+    strategy: depend
+  variables:
+    BASE_IMAGE_TAG: "$CI_COMMIT_SHORT_SHA"
   only:
     - master
