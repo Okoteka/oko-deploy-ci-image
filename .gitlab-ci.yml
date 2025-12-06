@@ -1,30 +1,30 @@
 stages:
-  - build
-  - trigger
- 
+  - infrastructure
+
 variables:
   IMAGE_TAG_LATEST: "$CI_REGISTRY_IMAGE:latest"
   IMAGE_TAG_COMMIT: "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA"
 
 build_ci_image:
-  stage: build
+  stage: infrastructure
+  before_script:
+    - |
+      if [ -f "$INFRA_CA" ]; then
+        mv "$INTERNAL_CA" internal.crt
+      elif [ -n "$INTERNAL_CA" ]; then
+        echo "$INTERNAL_CA" > internal.crt
+      else
+        echo "ERROR: Required variable INFRA_CA is not defined"
+        exit 1
+      fi
   script:
     - echo "$CI_REGISTRY_PASSWORD" | docker login -u "$CI_REGISTRY_USER" --password-stdin "$CI_REGISTRY"
     - docker build -t "$IMAGE_TAG_LATEST" -t "$IMAGE_TAG_COMMIT" .
     - docker push "$IMAGE_TAG_LATEST"
     - docker push "$IMAGE_TAG_COMMIT"
+  after_script:
+    - rm -f internal.crt
   only:
     - master
   tags:
     - runner-local
-
-trigger_internal:
-  stage: trigger
-  trigger:
-    project: "Okoteka/oko-deploy-ci-image-internal"
-    branch: "master"
-    strategy: depend
-  variables:
-    BASE_IMAGE_TAG: "$CI_COMMIT_SHORT_SHA"
-  only:
-    - master

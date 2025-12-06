@@ -33,4 +33,8 @@ RUN ansible-galaxy collection install community.sops
 
 WORKDIR /app
 
+COPY internal.crt /usr/local/share/ca-certificates/
+
+RUN update-ca-certificates
+
 CMD ["ansible-playbook", "--version"]
