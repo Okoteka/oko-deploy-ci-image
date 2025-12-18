@@ -20,8 +20,6 @@ stages:
     - docker push "$IMAGE_LATEST"
   after_script:
     - rm -f internal.crt
-  only:
-    - master
   tags:
     - runner-local
 
@@ -31,5 +29,6 @@ build-ansible:
   variables:
     IMAGE_NAME: "ansible"
   rules:
-    - changes:
+    - if: '$CI_COMMIT_BRANCH == "master"'
+      changes:
         - ansible/Dockerfile
