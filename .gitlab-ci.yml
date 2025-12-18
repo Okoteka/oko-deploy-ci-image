@@ -26,7 +26,7 @@ stages:
   tags:
     - runner-local
 
-build-ansible:
+build_ansible:
   extends:
     - .build_template
   variables:
@@ -35,4 +35,15 @@ build-ansible:
     - if: '$CI_COMMIT_BRANCH == "master"'
       changes:
         - ansible/Dockerfile
+        - .gitlab-ci.yml
+        
+build_protobuf:
+  extends:
+    - .build_template
+  variables:
+    IMAGE_NAME: "protobuf"
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "master"'
+      changes:
+        - protobuf/Dockerfile
         - .gitlab-ci.yml
