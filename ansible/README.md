@@ -7,4 +7,5 @@ This Docker image is used by the oko-deploy project for GitLab CI/CD pipelines.
 - Ansible 
 - Docker CLI
 - SSH client + sshpass
+- SOPS
 - Task (task runner)
