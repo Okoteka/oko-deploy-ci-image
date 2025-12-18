@@ -28,7 +28,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Install task runner
 RUN curl -sSL https://taskfile.dev/install.sh | sh -s -- -b /usr/local/bin
 
-# Install ansible collections (sops)
+# Install ansible collections (Sops)
 RUN ansible-galaxy collection install community.sops
 
 WORKDIR /app
