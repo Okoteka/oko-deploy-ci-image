@@ -23,7 +23,7 @@ internal-images:
 ├── protobuf
 │   ├── Dockerfile
 │   └── README.md
-└── README.
+└── README.md
 ```
 
 Each folder contains a Dockerfile and any additional files needed to build the image. Images are typically tagged with both a **version/identifier** and `latest` to support deterministic builds as well as convenience.
