@@ -6,6 +6,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     openssh-client \
     git \
     curl \
+    rsync \
     make \
     ca-certificates \
     gnupg \
