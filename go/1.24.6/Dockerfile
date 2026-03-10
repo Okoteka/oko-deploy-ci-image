@@ -13,4 +13,6 @@ RUN mkdir -p /root/.ssh && \
 
 RUN git config --global url."ssh://git@g.nas.loc/".insteadOf "https://g.nas.loc/"
 
+RUN wget -O- -nv https://golangci-lint.run/install.sh | sh -s -- -b $(go env GOPATH)/bin v2.11.2
+
 CMD ["go", "version"]
