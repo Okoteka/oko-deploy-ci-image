@@ -74,7 +74,7 @@ build_memu_downloader_1_25_7:
   extends:
     - .build_template
   variables:
-    IMAGE_NAME: "go/memu-downloader-1.25.7"
+    IMAGE_NAME: "go/1.25.7-memu-downloader"
   rules:
     - if: '$CI_COMMIT_BRANCH == "master"'
       changes:
