@@ -16,6 +16,6 @@ RUN git config --global url."ssh://git@g.nas.loc/".insteadOf "https://g.nas.loc/
 RUN wget -O- -nv https://golangci-lint.run/install.sh | sh -s -- -b $(go env GOPATH)/bin v2.11.2
 
 # Install task runner
-RUN curl -sSL https://taskfile.dev/install.sh | sh -s -- -b /usr/local/bin
+RUN curl -sSL https://taskfile.dev/install.sh | sh -s -- -b /usr/bin
 
 CMD ["go", "version"]
