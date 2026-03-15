@@ -69,3 +69,14 @@ build_docker:
       changes:
         - docker/27/Dockerfile
         - .gitlab-ci.yml
+
+build_memu_downloader_1_25_7:
+  extends:
+    - .build_template
+  variables:
+    IMAGE_NAME: "go/memu-downloader-1.25.7"
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "master"'
+      changes:
+        - go/memu-downloader-1.25.7/Dockerfile
+        - .gitlab-ci.yml
