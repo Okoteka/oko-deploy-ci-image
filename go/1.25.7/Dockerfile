@@ -4,8 +4,11 @@ COPY internal.crt /usr/local/share/ca-certificates/
 
 RUN update-ca-certificates
 
-RUN apk add --no-cache git openssh
-
+RUN apk add --no-cache \
+    git \
+    openssh \
+    build-base
+    
 ENV GOPRIVATE=g.nas.loc
 
 RUN mkdir -p /root/.ssh && \
