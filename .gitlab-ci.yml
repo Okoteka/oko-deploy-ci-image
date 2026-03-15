@@ -48,15 +48,15 @@ build_protobuf:
         - protobuf/Dockerfile
         - .gitlab-ci.yml
 
-build_go_1_24_6:
+build_go_1_25_7:
   extends:
     - .build_template
   variables:
-    IMAGE_NAME: "go/1.24.6"
+    IMAGE_NAME: "go/1.25.7"
   rules:
     - if: '$CI_COMMIT_BRANCH == "master"'
       changes:
-        - go/1.24.6/Dockerfile
+        - go/1.25.7/Dockerfile
         - .gitlab-ci.yml
 
 build_docker:

@@ -1,4 +1,4 @@
-FROM golang:1.24.6-alpine
+FROM golang:1.25.7-alpine
 
 COPY internal.crt /usr/local/share/ca-certificates/
 
@@ -14,5 +14,8 @@ RUN mkdir -p /root/.ssh && \
 RUN git config --global url."ssh://git@g.nas.loc/".insteadOf "https://g.nas.loc/"
 
 RUN wget -O- -nv https://golangci-lint.run/install.sh | sh -s -- -b $(go env GOPATH)/bin v2.11.2
+
+# Install task runner
+RUN curl -sSL https://taskfile.dev/install.sh | sh -s -- -b /usr/local/bin
 
 CMD ["go", "version"]

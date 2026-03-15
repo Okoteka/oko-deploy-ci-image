@@ -18,7 +18,7 @@ internal-images:
 │   ├── Dockerfile
 │   └── README.md
 ├── go
-│   └── 1.24.6
+│   └── 1.25.7
 │       └── Dockerfile
 ├── protobuf
 │   ├── Dockerfile
